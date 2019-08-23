@@ -44,7 +44,7 @@ export default class WebChatAdapter extends BotAdapter {
             },
             getSessionId: () => new Observable(observer => observer.complete()),
             postActivity: activity => {
-                const id = Date.now().toString();
+                const id = Date.now() + Math.random().toString(36);
 
                 return new Observable(observer => {
                     const serverActivity = {
@@ -73,21 +73,24 @@ export default class WebChatAdapter extends BotAdapter {
      * @param {TurnContext} context
      * @param {Activity[]} activities
      */
-    sendActivities(context, activities) {
-        const sentActivities = activities.map(activity => Object.assign({}, activity, {
-            id: Date.now().toString(),
-            channelId: 'WebChat',
+    async sendActivities(context, activities) {
+
+        const activityData = {
+            channelId: 'webchat-adapter',
             conversation: { id: 'bot' },
             from: BOT_PROFILE,
             recipient: USER_PROFILE,
             timestamp: new Date().toISOString()
-        }));
+        };
 
-        sentActivities.forEach(activity => this.activityObserver.next(activity));
+        const sentActivities = activities.map(activity =>  ({ ...activity, ...activityData, id: Date.now() + Math.random().toString(36) }));
 
-        return Promise.resolve(sentActivities.map(activity => {
-            return { id: activity.id };
-        }));
+        return sentActivities.map(activity => { 
+            const { id } = activity;
+
+            this.activityObserver.next(activity)
+            return { id }
+        });
     }
 
     /**
@@ -107,8 +110,6 @@ export default class WebChatAdapter extends BotAdapter {
         const context = new TurnContext(this, activity);
 
         // Runs the middleware pipeline followed by any registered business logic.
-        // If no business logic has been registered via processActivity, a default
-        // value is provided as to not break the bot.
-        return this.runMiddleware(context, this.logic || function() { });
+        return this.runMiddleware(context, this.logic);
     }
 }
