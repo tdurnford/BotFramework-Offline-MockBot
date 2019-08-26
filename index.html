@@ -22,7 +22,7 @@
     <script>
 
         window.WebChat.renderWebChat({
-          directLine: window.MockBotAdapter.createDirectLine({ processorl: async context => {
+          directLine: window.MockBotAdapter.createDirectLine({ processor: async context => {
             if (context.activity.type === 'message') {
               await context.sendActivity('Hello, World!');
             }
