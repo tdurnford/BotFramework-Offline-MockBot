@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
-    <script src="/index.js"></script>
+    <script src="./index.js"></script>
 
     <style>
       html, body { height: 100% }
@@ -22,7 +22,7 @@
     <script>
 
         window.WebChat.renderWebChat({
-          directLine: window.MockBotAdapter.createDirectLine({ processor: async context => {
+          directLine: window.MockBotAdapter.createDirectLine({ processorl: async context => {
             if (context.activity.type === 'message') {
               await context.sendActivity('Hello, World!');
             }
