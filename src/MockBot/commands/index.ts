@@ -2,6 +2,7 @@ import AdaptiveCard from './AdaptiveCard';
 import AnimationCard from './AnimationCard';
 import AudioCard from './AudioCard';
 import Default from './Default';
+import DumpActivity from './DumpActivity';
 import Echo from './Echo';
 import EchoTyping from './EchoTyping';
 import EmptyCard from './EmptyCard';
@@ -22,6 +23,7 @@ export default [
   Echo,
   EchoTyping,
   EmptyCard,
+  DumpActivity,
   HeroCard,
   Image,
   Markdown,

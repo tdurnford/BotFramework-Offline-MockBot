@@ -16,15 +16,6 @@ export default class WebChatAdapter extends BotAdapter {
     constructor() {
         super();
 
-        const memory = new MemoryStorage();
-        const conversationState = new ConversationState(memory);
-        const userState = new UserState(memory);
-
-        this.bot = new MockBot({ conversationState, userState });
-        this.logic = async (context) => {
-          await this.bot.run(context);
-        };
-
         this.botConnection = {
             connectionStatus$: new Observable(observer => {
                 observer.next(ConnectionStatus.Uninitialized);
@@ -51,7 +42,8 @@ export default class WebChatAdapter extends BotAdapter {
                         ...activity,
                         id,
                         conversation: { id: 'bot' },
-                        channelId: 'WebChat',
+                        channelId: 'webchat-adapter',
+                        from: USER_PROFILE,
                         recipient: BOT_PROFILE,
                         timestamp: new Date().toISOString()
                     };
@@ -80,10 +72,14 @@ export default class WebChatAdapter extends BotAdapter {
             conversation: { id: 'bot' },
             from: BOT_PROFILE,
             recipient: USER_PROFILE,
-            timestamp: new Date().toISOString()
         };
 
-        const sentActivities = activities.map(activity =>  ({ ...activity, ...activityData, id: Date.now() + Math.random().toString(36) }));
+        const sentActivities = activities.map(activity =>  ({ 
+            ...activity, 
+            ...activityData, 
+            id: Date.now() + Math.random().toString(36), 
+            timestamp: new Date().toISOString() 
+        }));
 
         return sentActivities.map(activity => { 
             const { id } = activity;
@@ -110,6 +106,22 @@ export default class WebChatAdapter extends BotAdapter {
         const context = new TurnContext(this, activity);
 
         // Runs the middleware pipeline followed by any registered business logic.
-        return this.runMiddleware(context, this.logic);
+        return this.runMiddleware(context, this.logic || function() {});
     }
+}
+
+export const createDirectLine = () => {
+    const memory = new MemoryStorage();
+    const conversationState = new ConversationState(memory);
+    const userState = new UserState(memory);
+
+    const mockBot = new MockBot({ conversationState, userState });
+
+    const mockBotAdapter = new WebChatAdapter();
+
+    mockBotAdapter.processActivity(async (context) => {
+        await mockBot.run(context);
+    });
+
+    return mockBotAdapter.botConnection;
 }

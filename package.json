@@ -6,10 +6,13 @@
     "license": "MIT",
     "main": "app.js",
     "scripts": {
-        "build": "webpack --mode=production",
-        "start": "webpack-dev-server",
+        "build:babel": "babel src --out-dir lib --extensions .ts,.js --copy-files --source-maps inline",
+        "build:webpack": "webpack --mode=production",
+        "start": "npx serve",
         "lint": "eslint .",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch:babel": "npm run build:babel -- --watch",
+        "watch:webpack": "webpack-dev-server"
     },
     "dependencies": {
         "@babel/runtime": "^7.1.5",
@@ -37,8 +40,10 @@
         "eslint-plugin-node": "^9.1.0",
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-standard": "^4.0.0",
+        "file-loader": "^4.2.0",
         "regenerator-runtime": "^0.13.2",
         "style-loader": "^0.23.1",
+        "typescript": "^3.5.3",
         "webpack": "^4.35.3",
         "webpack-cli": "^3.3.6",
         "webpack-dev-server": "^3.7.2"

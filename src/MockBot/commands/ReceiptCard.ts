@@ -21,19 +21,19 @@ const processor = async (context: TurnContext) => {
           subtitle: 'Surface Pro 4 is a powerful, versatile, lightweight laptop.',
           text: 'Surface does more. Just like you. For one device that does everything, you need more than a mobile OS.',
           image: {
-            url: `${ PUBLIC_URL }assets/surface1.jpg`,
+            url: `./assets/surface1.jpg`,
             alt: 'Microsoft Surface Alt',
             tap: {
               type: 'openUrl',
               title: 'Tapped it!',
-              value: `${ PUBLIC_URL }testurl1.html`
+              value: `./testurl1.html`
             }
           },
           price: '$XXX'
         }, {
           title: 'Surface Pro 4 (2) - No subtitle, No text.',
           image: {
-            url: `${ PUBLIC_URL }assets/surface2.jpg`,
+            url: `./assets/surface2.jpg`,
             alt: 'Microsoft Surface Alt',
             tap: {
               type: 'call',
@@ -74,7 +74,7 @@ const processor = async (context: TurnContext) => {
         tap: {
           type: 'openUrl',
           title: 'Tapped it!',
-          value: `${ PUBLIC_URL }testurl2.html`
+          value: `./testurl2.html`
         }
       }
     }]

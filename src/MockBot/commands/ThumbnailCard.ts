@@ -15,7 +15,7 @@ const processor = async (context: TurnContext) => {
       buttons: [],
       images: [{
         alt: 'Microsoft Surface Alt',
-        url: `${ PUBLIC_URL }assets/surface1.jpg`,
+        url: `./assets/surface1.jpg`,
       }],
       title: 'Microsoft Surface Pro',
     }

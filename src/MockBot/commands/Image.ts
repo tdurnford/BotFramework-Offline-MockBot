@@ -10,7 +10,7 @@ const processor = async (context: TurnContext) => {
   await context.sendActivity({
     attachments: [{
       contentType: 'image/jpeg',
-      contentUrl: `${ PUBLIC_URL }assets/surface1.jpg`,
+      contentUrl: `./assets/surface1.jpg`,
       name: 'Microsoft Surface'
     }]
   });

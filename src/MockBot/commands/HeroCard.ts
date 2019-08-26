@@ -23,7 +23,7 @@ const processor = async (context: TurnContext) => {
           title: 'Tapped it!',
           value: `https://webchat-mockbot.azurewebsites.net/public/testurl1.html`
         },
-        url: `https://webchat-mockbot.azurewebsites.net/public/assets/surface1.jpg`,
+        url: `./assets/surface1.jpg`,
       }],
       tap: {
         type: 'openUrl',

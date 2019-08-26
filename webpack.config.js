@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 
 module.exports = {
-    entry: './src/app.ts',
+    entry: './src/index.ts',
     devtool: 'source-map',
     devServer: {
         contentBase: './dist',
@@ -17,13 +17,9 @@ module.exports = {
                 test: /\.[jt]s$/,
                 include: [
                     join(__dirname, 'src'),
-                    join(__dirname, 'node_modules/botbuilder-core/lib'),
+                    join(__dirname, 'node_modules/botbuilder-core/lib')
                 ],
                 use: ['babel-loader']
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
             }
         ]
     },
@@ -32,14 +28,16 @@ module.exports = {
         new NamedModulesPlugin(),
         new HotModuleReplacementPlugin(),
         new CopyWebpackPlugin([
-            { from: resolve(__dirname, 'index.html'), to: '' }
+            { from: resolve(__dirname, 'index.html'), to: '' },
+            { from: resolve(__dirname, 'src/assets'), to: 'assets' },
+            { from: resolve(__dirname, 'src/public'), to: 'public' }
         ])
     ],
     resolve: {
         extensions: ['.css', '.js', '.ts']
     },
     output: {
-        filename: 'app.js',
+        filename: 'index.js',
         path: resolve(__dirname, 'dist')
     },
     node: {

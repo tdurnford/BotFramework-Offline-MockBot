@@ -17,7 +17,7 @@ const processor = async (context: TurnContext) => {
         text: 'No buttons, No Image, Autoloop, Autostart, Sharable',
         media: [{
           profile: 'animation',
-          url: `${ PUBLIC_URL }assets/surface_anim.gif`,
+          url: `./assets/surface_anim.gif`,
         }],
         autoloop: true,
         autostart: true

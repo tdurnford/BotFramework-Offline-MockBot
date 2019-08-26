@@ -35,19 +35,19 @@ const processor = async (context: TurnContext, arg: string) => {
       suggestedActions: {
         actions: [
           {
-            image: `${ PUBLIC_URL }assets/square-icon.png`,
+            image: `./assets/square-icon.png`,
             title: 'IM back as string',
             type: 'imBack',
             value: 'postback imback-string',
           },
           {
-            image: `${ PUBLIC_URL }assets/square-icon-red.png`,
+            image: `./assets/square-icon-red.png`,
             title: 'Post back as string',
             type: 'postBack',
             value: 'postback postback-string',
           },
           {
-            image: `${ PUBLIC_URL }assets/square-icon-green.png`,
+            image: `./assets/square-icon-green.png`,
             title: 'Post back as JSON',
             text: 'Some text',
             type: 'postBack',
@@ -56,7 +56,7 @@ const processor = async (context: TurnContext, arg: string) => {
             },
           },
           {
-            image: `${ PUBLIC_URL }assets/square-icon-purple.png`,
+            image: `./assets/square-icon-purple.png`,
             displayText: 'say Hello World!',
             title: 'Message back as JSON with display text',
             text: 'Some text',
@@ -66,7 +66,7 @@ const processor = async (context: TurnContext, arg: string) => {
             },
           },
           {
-            image: `${ PUBLIC_URL }assets/square-icon-purple.png`,
+            image: `./assets/square-icon-purple.png`,
             title: 'Message back as JSON without display text',
             type: 'messageBack',
             value: {
@@ -75,7 +75,7 @@ const processor = async (context: TurnContext, arg: string) => {
           },
           {
             displayText: 'Aloha',
-            image: `${ PUBLIC_URL }assets/square-icon-purple.png`,
+            image: `./assets/square-icon-purple.png`,
             text: 'echo Hello',
             title: 'Message back as string with display text',
             type: 'messageBack',

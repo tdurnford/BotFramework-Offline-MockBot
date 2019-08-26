@@ -4,6 +4,9 @@
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-import MockBotAdapter from './Adapter';
+import WebChatAdapter, { createDirectLine } from './Adapter';
 
-window['MockBotAdapter'] = MockBotAdapter;
+window['MockBotAdapter'] = {
+  WebChatAdapter,
+  createDirectLine
+};
