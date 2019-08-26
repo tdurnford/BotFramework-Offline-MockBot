@@ -3,10 +3,7 @@
   <head>
     <title>Web Chat: Full-featured bundle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--
-      This CDN points to the latest official release of Web Chat. If you need to test against Web Chat's latest bits, please refer to pointing to Web Chat's MyGet feed:
-      https://github.com/microsoft/BotFramework-WebChat#how-to-test-with-web-chats-latest-bits
-    -->
+
     <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
     <script src="/index.js"></script>
 
@@ -23,9 +20,13 @@
   <body>
     <div id="webchat" role="main"></div>
     <script>
+
         window.WebChat.renderWebChat({
-          directLine: window.MockBotAdapter.createDirectLine(),
-          sendTyping: true
+          directLine: window.MockBotAdapter.createDirectLine({ processor: async context => {
+            if (context.activity.type === 'message') {
+              await context.sendActivity('Hello, World!');
+            }
+          }}),
         }, document.getElementById('webchat'));
 
         document.querySelector('#webchat > *').focus();

@@ -102,6 +102,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name: 'Debug activity',
-  pattern: /dump-activity$/,
+  pattern: /dump-activity$/i,
   processor
 }

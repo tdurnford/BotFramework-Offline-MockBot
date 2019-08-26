@@ -83,7 +83,6 @@ export default class WebChatAdapter extends BotAdapter {
 
         return sentActivities.map(activity => { 
             const { id } = activity;
-
             this.activityObserver.next(activity)
             return { id }
         });
@@ -110,18 +109,22 @@ export default class WebChatAdapter extends BotAdapter {
     }
 }
 
-export const createDirectLine = () => {
+export const createDirectLine = ({ processor }) => {
     const memory = new MemoryStorage();
     const conversationState = new ConversationState(memory);
     const userState = new UserState(memory);
 
-    const mockBot = new MockBot({ conversationState, userState });
-
     const mockBotAdapter = new WebChatAdapter();
 
-    mockBotAdapter.processActivity(async (context) => {
-        await mockBot.run(context);
-    });
+    if (!processor) {
+        const mockBot = new MockBot({ conversationState, userState });
+        
+        mockBotAdapter.processActivity(async (context) => {
+            await mockBot.run(context);
+        });
+    } else {
+        mockBotAdapter.processActivity(processor);
+    }
 
     return mockBotAdapter.botConnection;
 }
