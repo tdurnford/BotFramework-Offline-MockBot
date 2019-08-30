@@ -6,10 +6,9 @@ const help = () => ({
   'typing': 'Send a typing indicator and end it with a message'
 });
 
-const processor = async (context: TurnContext) => {
-  const { activity: { text }} = context;
+const processor = async (context: TurnContext, { args }) => {
 
-  switch (text.substr(-1)) {
+  switch (args) {
     case '1':
       await context.sendActivity('Typing indicator should go away after 5 seconds.');
       await context.sendActivity({ type: 'typing' });

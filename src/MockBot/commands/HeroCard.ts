@@ -5,8 +5,7 @@ const help = () => ({
   'herocard long title': 'Show a hero card with a long title'
 });
 
-const processor = async (context: TurnContext) => {
-  const { activity: { text }} = context;
+const processor = async (context: TurnContext, { args }) => {
 
   const heroCard = {
     contentType: 'application/vnd.microsoft.card.hero',
@@ -31,17 +30,15 @@ const processor = async (context: TurnContext) => {
         value: `https://webchat-mockbot.azurewebsites.net/public/testurl2.html`
       },
       subtitle: 'This is the subtitle',
-      text: undefined,
+      text: '',
       title:  '[Details about image 1](https://microsoft.com)'
     }
   };
 
-  switch(text.toLowerCase()) {
-    case 'herocard long title':
-      heroCard.content.title = 'This is a HeroCard with a really, really long title that is intended to test the richCardsWrapTitle style option.';
-      break;
-    default:
-      heroCard.content.text = '**Price: $XXX.XX USD**\r\n------\n Additional details\r\n1. List item 1 \n2. List item 2 \n3. List item 3';
+  if (args == 'long title') {
+    heroCard.content.title = 'This is a HeroCard with a really, really long title that is intended to test the richCardsWrapTitle style option.';
+  } else {
+    heroCard.content.text = '**Price: $XXX.XX USD**\r\n------\n Additional details\r\n1. List item 1 \n2. List item 2 \n3. List item 3';
   }
 
   await context.sendActivity({ attachments: [heroCard] });

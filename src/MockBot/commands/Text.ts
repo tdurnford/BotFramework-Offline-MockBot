@@ -14,6 +14,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name: 'Plain text message',
-  pattern: /text$/i,
+  pattern: 'text',
   processor
 }

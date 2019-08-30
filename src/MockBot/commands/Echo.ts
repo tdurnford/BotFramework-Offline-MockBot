@@ -6,11 +6,9 @@ const help = () => ({
   'echo "Hello\nWorld!"': 'Parse the message as JSON and echo back'
 });
 
-const processor = async (context: TurnContext) => {
-  let { activity: { text: line }} = context;
+const processor = async (context: TurnContext, { args }) => {
   
-  line = line.substr(5);
-  const text = line[0] === '"' ? onErrorResumeNext(() => JSON.parse(line)) || '[Error while parsing the JSON]' : line;
+  const text = args[0] === '"' ? onErrorResumeNext(() => JSON.parse(args)) || '[Error while parsing the JSON]' : args;
 
   await context.sendActivity('Echoing back in a separate activity.');
   await context.sendActivity(text);

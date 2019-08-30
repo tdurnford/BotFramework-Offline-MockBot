@@ -1,5 +1,5 @@
 import { ActivityHandler, TurnContext, ActivityTypes } from 'botbuilder-core';
-import commands, { Default } from './commands';
+import commands, { Default, Value } from './commands';
 
 export default class MockBot extends ActivityHandler {
 
@@ -13,9 +13,26 @@ export default class MockBot extends ActivityHandler {
     this.echoTypingAccessor = conversationState.createProperty('echoTyping');
 
     this.onMessage(async (context: TurnContext) => {
-      const { activity: { text = '' }} = context;
-      const command = commands.find(({ pattern }) => pattern.test(text)) || Default;
-      await command.processor(context, { echoTypingAccessor: this.echoTypingAccessor });
+      const { activity: { attachments, text = '', value }} = context;
+      const { echoTypingAccessor } = this;
+
+      const cleanedText = text.toLowerCase().trim().replace(/\.$/, '');
+
+      const command = commands.find(({ pattern }) => pattern.test(cleanedText));
+
+      if (command) {
+        const options = {
+          args: cleanedText.split(' ').slice(1).join(' '),
+          echoTypingAccessor
+        };
+        await command.processor(context, options);
+      } else if (attachments) {
+
+      } else if (value) {
+        await Value.processor(context);
+      } else {
+        await Default.processor(context);
+      }
 
       await this.conversationState.saveChanges(context);
       await this.userState.saveChanges(context);

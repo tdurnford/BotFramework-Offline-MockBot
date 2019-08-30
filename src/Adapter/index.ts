@@ -25,27 +25,21 @@ export default class WebChatAdapter extends BotAdapter {
             activity$: new Observable(observer => {
                 this.activityObserver = observer;
             }),
-            end() {
-                // The React component was called to unmount:
-                // https://github.com/Microsoft/BotFramework-WebChat/blob/57360e4df92e041d5b0fd4810c1abf96621b5283/src/Chat.tsx#L237-L247
-                // Developers will need to decide what behavior the component should implement.
-                // For this sample, this.botConnection.componentWillUnmount() and this.botConnection.end()
-                // is never called.
-                console.log('this.botConnection.componentWillUnmount() called.');
-            },
+            end() { },
             getSessionId: () => new Observable(observer => observer.complete()),
             postActivity: activity => {
+                const timestamp = new Date().toISOString();
                 const id = Date.now() + Math.random().toString(36);
-
+            
                 return new Observable(observer => {
                     const serverActivity = {
                         ...activity,
                         id,
                         conversation: { id: 'bot' },
-                        channelId: 'webchat-adapter',
+                        channelId: 'webchat',
                         from: USER_PROFILE,
                         recipient: BOT_PROFILE,
-                        timestamp: new Date().toISOString()
+                        timestamp
                     };
 
                     this.onReceive(serverActivity).then(() => {
@@ -59,6 +53,16 @@ export default class WebChatAdapter extends BotAdapter {
         };
     }
 
+    async continueConversation(reference, logic) {
+        const activity = TurnContext.applyConversationReference(
+            { type: 'event', name: 'continueConversation' },
+            reference,
+            true
+        );
+        const context = new TurnContext(this, activity);
+        return await this.runMiddleware(context, logic as any);
+    }
+
     /**
      * This WebChatAdapter implements the sendActivities method which is called by the TurnContext class.
      * It's also possible to write a custom TurnContext with different methods of accessing an adapter.
@@ -68,7 +72,7 @@ export default class WebChatAdapter extends BotAdapter {
     async sendActivities(context, activities) {
 
         const activityData = {
-            channelId: 'webchat-adapter',
+            channelId: 'webchat',
             conversation: { id: 'bot' },
             from: BOT_PROFILE,
             recipient: USER_PROFILE,
@@ -83,7 +87,7 @@ export default class WebChatAdapter extends BotAdapter {
 
         return sentActivities.map(activity => { 
             const { id } = activity;
-            this.activityObserver.next(activity)
+            this.activityObserver.next(activity);
             return { id }
         });
     }
@@ -109,7 +113,7 @@ export default class WebChatAdapter extends BotAdapter {
     }
 }
 
-export const createDirectLine = ({ processor }) => {
+export const createDirectLine = ({ processor } = {}) => {
     const memory = new MemoryStorage();
     const conversationState = new ConversationState(memory);
     const userState = new UserState(memory);

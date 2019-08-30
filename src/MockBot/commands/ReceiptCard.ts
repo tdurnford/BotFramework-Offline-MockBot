@@ -5,7 +5,6 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
-  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
@@ -84,6 +83,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name: 'Receipt card',
-  pattern: /receiptcard$/i,
+  pattern: 'receiptcard',
   processor
 }

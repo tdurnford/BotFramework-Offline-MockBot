@@ -101,9 +101,8 @@ const getCardJSON = (name: string = ''): any => {
   }
 }
 
-const processor = async (context: TurnContext) => {
-  const { activity: { text }} = context;
-  const names = text.substr(5).split(' ');
+const processor = async (context: TurnContext, { args }: { args: string }) => {
+  const names = args.split(' ');
   const contents = names.filter(name => name).map(name => getCardJSON(name));
 
   if (contents && contents.length) {

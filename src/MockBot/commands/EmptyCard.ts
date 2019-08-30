@@ -31,6 +31,6 @@ const processor = async (context: TurnContext) => {
 export default { 
   help,
   name: "Empty card",
-  pattern: /emptycard$/i,
+  pattern: /^emptycard$/i,
   processor
 }

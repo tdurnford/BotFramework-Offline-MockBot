@@ -26,6 +26,6 @@ const processor = async (context: TurnContext) => {
 export default { 
   help,
   name: 'Audio card', 
-  pattern: /audio$/i,
+  pattern: /audiocard$/i,
   processor
 };

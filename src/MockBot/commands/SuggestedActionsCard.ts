@@ -6,10 +6,9 @@ const help = () => ({
   'suggested-actions': 'Show a suggested actions demo'
 });
 
-const processor = async (context: TurnContext, arg: string) => {
-  const { PUBLIC_URL } = process.env;
+const processor = async (context: TurnContext, { args }) => {
 
-  if ((arg || '').toLowerCase().trim() === 'others') {
+  if (args === 'others') {
     // Related to #1057
 
     await context.sendActivity({
@@ -25,8 +24,8 @@ const processor = async (context: TurnContext, arg: string) => {
         to: ['some-other-id']
       }
     });
-  } else if (arg) {
-    await context.sendActivity(`You submitted "${ arg.trim() }"`);
+  } else if (args) {
+    await context.sendActivity(`You submitted "${ args }"`);
   } else {
     await context.sendActivity({
       type: 'message',

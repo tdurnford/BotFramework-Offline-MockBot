@@ -22,11 +22,8 @@
     <script>
 
         window.WebChat.renderWebChat({
-          directLine: window.MockBotAdapter.createDirectLine({ processor: async context => {
-            if (context.activity.type === 'message') {
-              await context.sendActivity('Hello, World!');
-            }
-          }}),
+          directLine: window.MockBotAdapter.createDirectLine(),
+          sendTyping: true
         }, document.getElementById('webchat'));
 
         document.querySelector('#webchat > *').focus();

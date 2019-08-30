@@ -29,6 +29,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name: 'Video card',
-  pattern: /videocard$/i,
+  pattern: 'videocard',
   processor
 }
