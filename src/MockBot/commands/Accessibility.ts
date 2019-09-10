@@ -21,7 +21,7 @@ async function processor(context: TurnContext) {
   await DocumentWord.processor(context);
   await Image.processor(context);
   await ImageSVG.processor(context);
-  await Layout.processor(context);
+  await Layout.processor(context, { args: '' });
   await Layout.processor(context, { args: 'single' });
   await Layout.processor(context, { args: 'single carousel' });
   await Layout.processor(context, { args: 'double' });

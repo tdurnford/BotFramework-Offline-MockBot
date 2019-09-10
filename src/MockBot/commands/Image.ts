@@ -5,11 +5,12 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     attachments: [{
       contentType: 'image/jpeg',
-      contentUrl: `./assets/surface1.jpg`,
+      contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
       name: 'Microsoft Surface'
     }]
   });

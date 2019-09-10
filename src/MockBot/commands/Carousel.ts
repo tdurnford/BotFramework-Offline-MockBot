@@ -5,6 +5,7 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
@@ -17,7 +18,7 @@ const processor = async (context: TurnContext) => {
         subtitle: 'This is the subtitle',
         text: 'Price: $XXX.XX USD',
         images: [{
-          url: `./assets/surface1.jpg`
+          url: `${PUBLIC_URL}assets/surface1.jpg`
         }],
         buttons: [{
           type: 'imBack',
@@ -36,7 +37,7 @@ const processor = async (context: TurnContext) => {
         subtitle: 'This is the subtitle',
         text: 'Price: $XXX.XX USD',
         images: [{
-          url: `./assets/surface2.jpg`
+          url: `${PUBLIC_URL}assets/surface2.jpg`
         }],
         buttons: [{
           type: 'imBack',
@@ -55,7 +56,7 @@ const processor = async (context: TurnContext) => {
         subtitle: 'This is the subtitle',
         text: 'Price: $XXX.XX USD',
         images: [{
-          url: `./assets/surface3.jpg`
+          url: `${PUBLIC_URL}assets/surface3.jpg`
         }],
         buttons: [{
           type: 'imBack',
@@ -74,7 +75,7 @@ const processor = async (context: TurnContext) => {
         subtitle: 'This is the subtitle',
         text: 'Price: $XXX.XX USD',
         images: [{
-          url: `./assets/surface4.jpg`
+          url: `${PUBLIC_URL}assets/surface4.jpg`
         }],
         buttons: [{
           type: 'imBack',

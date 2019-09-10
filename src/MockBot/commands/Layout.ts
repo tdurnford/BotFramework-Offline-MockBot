@@ -8,7 +8,8 @@ const help = () => ({
   'layout': 'Show 4 attachments in stacked layout'
 });
 
-async function processor(context: TurnContext, { args }) {
+async function processor(context: TurnContext, { args } = {}) {
+  const { PUBLIC_URL } = process.env;
 
   switch (args) {
     case 'single':
@@ -17,7 +18,7 @@ async function processor(context: TurnContext, { args }) {
         text: 'This command show single attachment in **default (stacked)** layout',
         attachments: [{
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface1.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
           name: 'Microsoft Surface'
         }]
       });
@@ -32,7 +33,7 @@ async function processor(context: TurnContext, { args }) {
         attachmentLayout: 'carousel',
         attachments: [{
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface1.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
           name: 'Microsoft Surface'
         }]
       });
@@ -46,11 +47,11 @@ async function processor(context: TurnContext, { args }) {
         attachmentLayout: 'carousel',
         attachments: [{
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface1.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
           name: 'Microsoft Surface'
         }, {
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface2.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface2.jpg`,
           name: 'Microsoft Surface'
         }]
       });
@@ -64,7 +65,7 @@ async function processor(context: TurnContext, { args }) {
         attachmentLayout: 'carousel',
         attachments: [{
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface1.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
           name: 'Microsoft Surface'
         }, {
           contentType: 'text/plain',
@@ -86,7 +87,7 @@ async function processor(context: TurnContext, { args }) {
         text: 'This command show 4 attachments in **default (stacked)** layout',
         attachments: [{
           contentType: 'image/jpg',
-          contentUrl: `./assets/surface1.jpg`,
+          contentUrl: `${PUBLIC_URL}assets/surface1.jpg`,
           name: 'Microsoft Surface'
         }, {
           contentType: 'text/plain',

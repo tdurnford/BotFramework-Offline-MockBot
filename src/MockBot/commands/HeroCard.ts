@@ -6,6 +6,7 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext, { args }) => {
+  const { PUBLIC_URL } = process.env;
 
   const heroCard = {
     contentType: 'application/vnd.microsoft.card.hero',
@@ -22,7 +23,7 @@ const processor = async (context: TurnContext, { args }) => {
           title: 'Tapped it!',
           value: `https://webchat-mockbot.azurewebsites.net/public/testurl1.html`
         },
-        url: `./assets/surface1.jpg`,
+        url: `${PUBLIC_URL}assets/surface1.jpg`,
       }],
       tap: {
         type: 'openUrl',
@@ -39,6 +40,29 @@ const processor = async (context: TurnContext, { args }) => {
     heroCard.content.title = 'This is a HeroCard with a really, really long title that is intended to test the richCardsWrapTitle style option.';
   } else {
     heroCard.content.text = '**Price: $XXX.XX USD**\r\n------\n Additional details\r\n1. List item 1 \n2. List item 2 \n3. List item 3';
+    heroCard.content.buttons = [
+      {
+        title: 'imBack Action',
+        type: 'imBack',
+        value: 'imBack Button'
+      },
+      {
+        title: 'postBack Action',
+        type: 'postBack',
+        value: 'postBack Button'
+      },
+      {
+        displayText: 'Send messageBack with display text',
+        title: 'messageBack Action with displayText',
+        type: 'messageBack',
+        value: 'messageBack Button'
+      },
+      {
+        title: 'messageBack Action with no display text',
+        type: 'messageBack',
+        value: 'messageBack Button'
+      },
+    ];
   }
 
   await context.sendActivity({ attachments: [heroCard] });

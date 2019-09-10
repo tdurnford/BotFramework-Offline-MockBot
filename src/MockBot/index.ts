@@ -1,5 +1,5 @@
 import { ActivityHandler, TurnContext, ActivityTypes } from 'botbuilder-core';
-import commands, { Default, Value } from './commands';
+import commands, { Default, Upload, Value } from './commands';
 
 export default class MockBot extends ActivityHandler {
 
@@ -13,21 +13,22 @@ export default class MockBot extends ActivityHandler {
     this.echoTypingAccessor = conversationState.createProperty('echoTyping');
 
     this.onMessage(async (context: TurnContext) => {
-      const { activity: { attachments, text = '', value }} = context;
+      const { activity: { attachments = [], text = '', value }} = context;
       const { echoTypingAccessor } = this;
 
-      const cleanedText = text.toLowerCase().trim().replace(/\.$/, '');
+      const cleanedText = text.trim().replace(/\.$/, '');
 
       const command = commands.find(({ pattern }) => pattern.test(cleanedText));
 
       if (command) {
         const options = {
-          args: cleanedText.split(' ').slice(1).join(' '),
-          echoTypingAccessor
+          args: cleanedText.toLowerCase().split(' ').slice(1).join(' '),
+          echoTypingAccessor,
+          text: cleanedText.split(' ').slice(1).join(' '),
         };
         await command.processor(context, options);
-      } else if (attachments) {
-
+      } else if (attachments.length) {
+        await Upload.processor(context);
       } else if (value) {
         await Value.processor(context);
       } else {
@@ -36,6 +37,14 @@ export default class MockBot extends ActivityHandler {
 
       await this.conversationState.saveChanges(context);
       await this.userState.saveChanges(context);
+    });
+
+    this.onEvent(async (context: TurnContext) => {
+      if (context.activity.name === 'webchat/join') {
+        await context.sendActivity(`Got \`webchat/join\` event, your language is \`${ (context.activity.value || {}).language }\``);
+      } else if (context.activity.name === 'webchat/ping') {
+        await context.sendActivity({ type: 'event', name: 'webchat/pong', value: context.activity.value });
+      }
     });
 
     this.onUnrecognizedActivityType(async (context: TurnContext) => {

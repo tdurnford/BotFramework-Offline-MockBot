@@ -106,7 +106,7 @@ const processor = async (context: TurnContext, { args }: { args: string }) => {
   const contents = names.filter(name => name).map(name => getCardJSON(name));
 
   if (contents && contents.length) {
-    let text = `Showing ${ names.filter(name => name).join(', ') }`;
+    let text = `Showing  ${ names.filter(name => name).join(', ') }`;
 
     await context.sendActivity({
       type: 'message',

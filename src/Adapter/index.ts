@@ -6,7 +6,7 @@ import Observable from 'core-js/features/observable';
 
 import MockBot from '../MockBot';
 
-export const USER_PROFILE = { id: 'user', name: 'user', role: 'user' };
+export const USER_PROFILE = { id: 'user', role: 'user' };
 export const BOT_PROFILE = { id: 'bot', name: 'bot', role: 'bot' };
 
 /**
@@ -37,7 +37,6 @@ export default class WebChatAdapter extends BotAdapter {
                         id,
                         conversation: { id: 'bot' },
                         channelId: 'webchat',
-                        from: USER_PROFILE,
                         recipient: BOT_PROFILE,
                         timestamp
                     };
@@ -114,13 +113,13 @@ export default class WebChatAdapter extends BotAdapter {
 }
 
 export const createDirectLine = ({ processor } = {}) => {
-    const memory = new MemoryStorage();
-    const conversationState = new ConversationState(memory);
-    const userState = new UserState(memory);
-
     const mockBotAdapter = new WebChatAdapter();
 
     if (!processor) {
+        const memory = new MemoryStorage();
+        const conversationState = new ConversationState(memory);
+        const userState = new UserState(memory);
+        
         const mockBot = new MockBot({ conversationState, userState });
         
         mockBotAdapter.processActivity(async (context) => {

@@ -5,6 +5,7 @@ const help =  () => ({
 });
 
 const processor = async (context: TurnContext) => {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
@@ -16,7 +17,7 @@ const processor = async (context: TurnContext) => {
         text: 'No buttons, No Image, Autoloop, Autostart, Sharable',
         media: [{
           profile: 'animation',
-          url: `./assets/surface_anim.gif`,
+          url: `${PUBLIC_URL}assets/surface_anim.gif`,
         }],
         autoloop: true,
         autostart: true

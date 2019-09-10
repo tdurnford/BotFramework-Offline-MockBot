@@ -5,14 +5,14 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
-
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
     text: '',
     attachments: [{
       contentType: 'audio/mpeg',
-      contentUrl: `./assets/bftest.mp3`,
+      contentUrl: `${PUBLIC_URL}assets/bftest.mp3`,
       name: 'BotFramework Test'
     }]
   });

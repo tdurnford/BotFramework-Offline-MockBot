@@ -1,7 +1,11 @@
-const { join, resolve } = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
+const { join, resolve } = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
+
+require('dotenv').config();
+
+const PUBLIC_URL = process.env.PUBLIC_URL || '/';
 
 module.exports = {
     entry: './src/index.ts',
@@ -31,7 +35,10 @@ module.exports = {
             { from: resolve(__dirname, 'index.html'), to: '' },
             { from: resolve(__dirname, 'src/assets'), to: 'assets' },
             { from: resolve(__dirname, 'src/public'), to: 'public' }
-        ])
+        ]),
+        new DefinePlugin({
+            'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL)
+        })
     ],
     resolve: {
         extensions: ['.css', '.js', '.ts']

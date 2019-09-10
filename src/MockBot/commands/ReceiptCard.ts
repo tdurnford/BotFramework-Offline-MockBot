@@ -5,6 +5,7 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
@@ -20,7 +21,7 @@ const processor = async (context: TurnContext) => {
           subtitle: 'Surface Pro 4 is a powerful, versatile, lightweight laptop.',
           text: 'Surface does more. Just like you. For one device that does everything, you need more than a mobile OS.',
           image: {
-            url: `./assets/surface1.jpg`,
+            url: `${PUBLIC_URL}assets/surface1.jpg`,
             alt: 'Microsoft Surface Alt',
             tap: {
               type: 'openUrl',
@@ -32,7 +33,7 @@ const processor = async (context: TurnContext) => {
         }, {
           title: 'Surface Pro 4 (2) - No subtitle, No text.',
           image: {
-            url: `./assets/surface2.jpg`,
+            url: `${PUBLIC_URL}assets/surface2.jpg`,
             alt: 'Microsoft Surface Alt',
             tap: {
               type: 'call',

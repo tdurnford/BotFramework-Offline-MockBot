@@ -5,6 +5,7 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext) => {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
@@ -15,10 +16,10 @@ const processor = async (context: TurnContext) => {
         subtitle: 'Large Video',
         text: 'No buttons, No Image, Autoloop, No Sharable',
         media: [{
-          url: `./assets/msband.mp4`,
+          url: `${PUBLIC_URL}assets/msband.mp4`,
           profile: 'videocard'
         }],
-        image: { url: `./assets/ms-band1.jpg` },
+        image: { url: `${PUBLIC_URL}assets/ms-band1.jpg` },
         autoloop: true,
         autostart: false
       }

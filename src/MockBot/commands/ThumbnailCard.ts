@@ -6,6 +6,7 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext, { args }) => {
+  const { PUBLIC_URL } = process.env;
 
   const thumbnailCard = {
     contentType: 'application/vnd.microsoft.card.thumbnail',
@@ -13,7 +14,7 @@ const processor = async (context: TurnContext, { args }) => {
       buttons: [],
       images: [{
         alt: 'Microsoft Surface Alt',
-        url: `./assets/surface1.jpg`,
+        url: `${PUBLIC_URL}assets/surface1.jpg`,
       }],
       title: 'Microsoft Surface Pro',
     }

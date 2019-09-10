@@ -7,6 +7,7 @@ const help = () => ({
 });
 
 async function processor(context: TurnContext, { args }: { args: string }) {
+  const { PUBLIC_URL } = process.env;
 
   switch (args) {
     case 'vimeo':
@@ -34,7 +35,7 @@ async function processor(context: TurnContext, { args }: { args: string }) {
         type: 'message',
         attachments: [{
           contentType: 'video/mp4',
-          contentUrl: `./assets/msband.mp4`,
+          contentUrl: `${PUBLIC_URL}assets/msband.mp4`,
           name: 'Microsoft Band 2'
         }]
       });

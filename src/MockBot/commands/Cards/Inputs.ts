@@ -127,7 +127,8 @@ export default () => ({
           "value": "3"
         }
       ],
-      "id": "CompactSelectVal"
+      "id": "CompactSelectVal",
+      "style": "expanded"
     },
     {
       "type": "TextBlock",

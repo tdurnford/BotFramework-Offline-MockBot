@@ -5,12 +5,13 @@ const help = () => ({
 });
 
 async function processor(context: TurnContext) {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
     attachments: [{
       contentType: 'image/svg+xml',
-      contentUrl: `./assets/bf_square.svg`,
+      contentUrl: `${PUBLIC_URL}assets/bf_square.svg`,
       name: 'Microsoft Bot Framework'
     }]
   });

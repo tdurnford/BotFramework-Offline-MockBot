@@ -56,6 +56,6 @@ async function processor(context: TurnContext, { args }: { args: string; }) {
 export default {
   help,
   name: 'Input hint',
-  pattern: /^hint(\s+[\d\w]+)?(\s+[\d\w]+)?/i,
+  pattern: /^input[\-\s]hint(\s+[\d\w]+)?(\s+[\d\w]+)?|^hint(\s+[\d\w]+)?(\s+[\d\w]+)?/i,
   processor 
 }

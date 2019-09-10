@@ -5,12 +5,13 @@ const help = () => ({
 });
 
 async function processor(context: TurnContext) {
+  const { PUBLIC_URL } = process.env;
 
   await context.sendActivity({
     type: 'message',
     attachments: [{
       contentType: 'text/plain',
-      contentUrl: `./assets/test.txt`,
+      contentUrl: `${PUBLIC_URL}assets/test.txt`,
       name: 'test.txt'
     }]
   });
