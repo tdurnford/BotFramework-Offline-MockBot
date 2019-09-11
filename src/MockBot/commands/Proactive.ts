@@ -4,7 +4,7 @@ import sleep from '../utils/sleep';
 const WAIT_INTERVAL = 5000;
 
 const help = () => ({
-  'proactive': 'Proactively send a message later'
+  proactive: 'Proactively send a message later'
 });
 
 async function processor(context: TurnContext) {
@@ -12,14 +12,17 @@ async function processor(context: TurnContext) {
 
   await context.sendActivity({
     type: 'message',
-    text: `Will send a proactive message after ${ WAIT_INTERVAL / 1000 } seconds. Attached is the JSON of the conversation \`reference\` that will be used to reinstantiate the \`TurnContext\`.`,
-    attachments: [{
-      content: `\`\`\`\n${ JSON.stringify(reference, null, 2) }\n\`\`\``,
-      contentType: 'text/markdown'
-    }]
+    text: `Will send a proactive message after ${WAIT_INTERVAL /
+      1000} seconds. Attached is the JSON of the conversation \`reference\` that will be used to reinstantiate the \`TurnContext\`.`,
+    attachments: [
+      {
+        content: `\`\`\`\n${JSON.stringify(reference, null, 2)}\n\`\`\``,
+        contentType: 'text/markdown'
+      }
+    ]
   });
 
-  (async function (reference) {
+  (async function(reference) {
     // We specifically write this block of code to show how proactive message should work.
     // This block of code should run under another process and it will only have knowledge of adapter setup and conversation reference.
     await sleep(WAIT_INTERVAL);
@@ -38,4 +41,4 @@ export default {
   name: 'Proactive message',
   pattern: 'proactive',
   processor
- }
+};

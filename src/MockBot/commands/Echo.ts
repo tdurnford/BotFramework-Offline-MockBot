@@ -7,16 +7,15 @@ const help = () => ({
 });
 
 const processor = async (context: TurnContext, { text }) => {
-  
   const echo = text[0] === '"' ? onErrorResumeNext(() => JSON.parse(text)) || '[Error while parsing the JSON]' : text;
 
   await context.sendActivity('Echoing back in a separate activity.');
   await context.sendActivity(echo);
-}
+};
 
-export default { 
+export default {
   help,
   name: 'Echo',
-  pattern: /echo\s/i, 
+  pattern: /echo\s/i,
   processor
 };

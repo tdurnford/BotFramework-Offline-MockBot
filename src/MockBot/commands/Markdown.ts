@@ -1,12 +1,10 @@
 import { TurnContext } from 'botbuilder-core';
 
 const help = () => ({
-  'markdown': 'Show a Markdown-formatted message'
+  markdown: 'Show a Markdown-formatted message'
 });
 
-
 const processor = async (context: TurnContext) => {
-
   await context.sendActivity({
     type: 'message',
     textFormat: 'markdown',
@@ -19,4 +17,4 @@ export default {
   name: 'Markdown',
   pattern: /markdown$/i,
   processor
-}
+};

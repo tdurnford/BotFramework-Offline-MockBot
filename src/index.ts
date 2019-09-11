@@ -11,4 +11,4 @@ window['MockBotAdapter'] = {
   createDirectLine
 };
 
-console.log(process.env.PUBLIC_URL)
+console.log(process.env.PUBLIC_URL);

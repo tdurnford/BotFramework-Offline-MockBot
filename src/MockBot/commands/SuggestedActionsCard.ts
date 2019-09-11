@@ -17,16 +17,18 @@ const processor = async (context: TurnContext, { args }) => {
       textFormat: 'plain',
       text: 'This activity should not display any suggested actions.',
       suggestedActions: {
-        actions: [{
-          title: 'This button should not appear',
-          type: 'imBack',
-          value: 'suggested-actions this-button-should-not-appear',
-        }],
+        actions: [
+          {
+            title: 'This button should not appear',
+            type: 'imBack',
+            value: 'suggested-actions this-button-should-not-appear'
+          }
+        ],
         to: ['some-other-id']
       }
     });
   } else if (args) {
-    await context.sendActivity(`You submitted "${ args }"`);
+    await context.sendActivity(`You submitted "${args}"`);
   } else {
     await context.sendActivity({
       type: 'message',
@@ -38,13 +40,13 @@ const processor = async (context: TurnContext, { args }) => {
             image: `${PUBLIC_URL}assets/square-icon.png`,
             title: 'IM back as string',
             type: 'imBack',
-            value: 'postback imback-string',
+            value: 'postback imback-string'
           },
           {
             image: `${PUBLIC_URL}assets/square-icon-red.png`,
             title: 'Post back as string',
             type: 'postBack',
-            value: 'postback postback-string',
+            value: 'postback postback-string'
           },
           {
             image: `${PUBLIC_URL}assets/square-icon-green.png`,
@@ -53,7 +55,7 @@ const processor = async (context: TurnContext, { args }) => {
             type: 'postBack',
             value: {
               hello: 'World!'
-            },
+            }
           },
           {
             image: `${PUBLIC_URL}assets/square-icon-purple.png`,
@@ -63,7 +65,7 @@ const processor = async (context: TurnContext, { args }) => {
             type: 'messageBack',
             value: {
               hello: 'World!'
-            },
+            }
           },
           {
             image: `${PUBLIC_URL}assets/square-icon-purple.png`,
@@ -71,7 +73,7 @@ const processor = async (context: TurnContext, { args }) => {
             type: 'messageBack',
             value: {
               hello: 'World!'
-            },
+            }
           },
           {
             displayText: 'Aloha',
@@ -96,4 +98,4 @@ export default {
   name,
   pattern: /^suggested\-actions(\s+[\d\w]+)?/i,
   processor
-}
+};

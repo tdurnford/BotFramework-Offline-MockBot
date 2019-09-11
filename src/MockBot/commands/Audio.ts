@@ -1,7 +1,7 @@
 import { TurnContext } from 'botbuilder-core';
 
 const help = () => ({
-  'audio': 'Show an audio attachment'
+  audio: 'Show an audio attachment'
 });
 
 const processor = async (context: TurnContext) => {
@@ -10,17 +10,19 @@ const processor = async (context: TurnContext) => {
   await context.sendActivity({
     type: 'message',
     text: '',
-    attachments: [{
-      contentType: 'audio/mpeg',
-      contentUrl: `${PUBLIC_URL}assets/bftest.mp3`,
-      name: 'BotFramework Test'
-    }]
+    attachments: [
+      {
+        contentType: 'audio/mpeg',
+        contentUrl: `${PUBLIC_URL}assets/bftest.mp3`,
+        name: 'BotFramework Test'
+      }
+    ]
   });
 };
 
 export default {
-  help, 
+  help,
   name: 'Audio attachment',
   pattern: /^audio$/i,
-  processor 
-}
+  processor
+};

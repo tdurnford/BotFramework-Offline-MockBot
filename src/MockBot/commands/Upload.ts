@@ -2,7 +2,7 @@ import { Attachment, TurnContext } from 'botbuilder-core';
 import fetch from 'node-fetch';
 
 const help = () => ({
-  'upload': 'Upload a file'
+  upload: 'Upload a file'
 });
 
 async function fetchJSON(url) {
@@ -13,7 +13,7 @@ async function fetchJSON(url) {
 
     return JSON.parse(text);
   } else {
-    throw new Error(`Server returned ${ res.status }`);
+    throw new Error(`Server returned ${res.status}`);
   }
 }
 
@@ -26,10 +26,7 @@ function isTrustedAttachmentURL(url) {
 }
 
 async function echoAttachment({ contentType, contentUrl, name }) {
-  if (
-    contentType === 'application/json'
-    && isTrustedAttachmentURL(contentUrl)
-  ) {
+  if (contentType === 'application/json' && isTrustedAttachmentURL(contentUrl)) {
     // We only fetch content from trusted source, so we don't DDoS anyone.
 
     return {
@@ -47,7 +44,9 @@ async function echoAttachment({ contentType, contentUrl, name }) {
 }
 
 const processor = async (context: TurnContext) => {
-  const { activity: { attachments = [] }} = context;
+  const {
+    activity: { attachments = [] }
+  } = context;
 
   if (attachments.length) {
     await context.sendActivity({
@@ -68,4 +67,4 @@ export default {
   name: 'File upload',
   pattern: /upload$/i,
   processor
-}
+};

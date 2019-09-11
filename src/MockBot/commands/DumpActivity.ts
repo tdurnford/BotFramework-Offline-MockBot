@@ -37,19 +37,15 @@ const processor = async (context: TurnContext) => {
   const serializedActivity = {
     action,
     attachmentLayout,
-    attachments: attachments && attachments.map(({
-      content,
-      contentType,
-      contentUrl,
-      name,
-      thumbnailUrl
-    }) => ({
-      content,
-      contentType,
-      contentUrl,
-      name,
-      thumbnailUrl
-    })),
+    attachments:
+      attachments &&
+      attachments.map(({ content, contentType, contentUrl, name, thumbnailUrl }) => ({
+        content,
+        contentType,
+        contentUrl,
+        name,
+        thumbnailUrl
+      })),
     channelId,
     conversation,
     channelData,
@@ -65,13 +61,7 @@ const processor = async (context: TurnContext) => {
     serviceUrl,
     speak,
     suggestedActions: suggestedActions && {
-      actions: suggestedActions.actions.map(({
-        image,
-        text,
-        title,
-        type,
-        value
-      }) => ({
+      actions: suggestedActions.actions.map(({ image, text, title, type, value }) => ({
         image,
         text,
         title,
@@ -92,16 +82,18 @@ const processor = async (context: TurnContext) => {
   await context.sendActivity({
     type: 'message',
     text: 'Partial dump of the activity sent by the user.',
-    attachments: [{
-      content: `\`\`\`\n${ JSON.stringify(serializedActivity, null, 2) }\n\`\`\``,
-      contentType: 'text/markdown'
-    }]
+    attachments: [
+      {
+        content: `\`\`\`\n${JSON.stringify(serializedActivity, null, 2)}\n\`\`\``,
+        contentType: 'text/markdown'
+      }
+    ]
   });
-}
+};
 
 export default {
   help,
   name: 'Debug activity',
   pattern: /^dump-activity$/i,
   processor
-}
+};

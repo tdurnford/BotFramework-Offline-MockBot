@@ -60,7 +60,7 @@ export default [
   Xml
 ].map(command => ({
   ...command,
-  pattern: typeof command.pattern === 'string' ? new RegExp(`^${ command.pattern }$`, 'i') : command.pattern,
+  pattern: typeof command.pattern === 'string' ? new RegExp(`^${command.pattern}$`, 'i') : command.pattern
 }));
 
 export { Default, Upload, Value };

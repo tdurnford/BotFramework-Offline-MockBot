@@ -12,7 +12,7 @@ import Video from './Video';
 import Xml from './Xml';
 
 const help = () => ({
-  'accessibility': 'Show all activities related to accessibility test'
+  accessibility: 'Show all activities related to accessibility test'
 });
 
 async function processor(context: TurnContext) {
@@ -40,4 +40,4 @@ export default {
   name,
   pattern: /^accessibility/$,
   processor
-}
+};

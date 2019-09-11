@@ -9,11 +9,13 @@ async function processor(context: TurnContext) {
 
   await context.sendActivity({
     type: 'message',
-    attachments: [{
-      contentType: 'text/plain',
-      contentUrl: `${PUBLIC_URL}assets/test.txt`,
-      name: 'test.txt'
-    }]
+    attachments: [
+      {
+        contentType: 'text/plain',
+        contentUrl: `${PUBLIC_URL}assets/test.txt`,
+        name: 'test.txt'
+      }
+    ]
   });
 }
 
@@ -22,4 +24,4 @@ export default {
   name: 'Plain document attachment',
   pattern: /$document-plain/i,
   processor
-}
+};
