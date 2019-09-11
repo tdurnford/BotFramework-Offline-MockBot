@@ -19,8 +19,6 @@ const processor = async (context: TurnContext) => {
       contentType: 'text/markdown'
     });
 
-  console.log(value, text, attachments);
-
   await context.sendActivity({
     text: 'You posted',
     attachments
