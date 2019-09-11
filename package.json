@@ -4,7 +4,18 @@
     "description": "BotBuilder v4 echo bot using botframework-webchat",
     "author": "Microsoft",
     "license": "MIT",
+    "husky": {
+        "hooks": {
+          "pre-commit": "lint-staged"
+        }
+    },
     "main": "app.js",
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+          "prettier --write src/**/*.ts",
+          "git add"
+        ]
+    },
     "scripts": {
         "build:babel": "babel src --out-dir lib --extensions .ts,.js --copy-files --source-maps inline",
         "build:webpack": "webpack --mode=production",
@@ -45,6 +56,8 @@
         "eslint-plugin-standard": "^4.0.0",
         "file-loader": "^4.2.0",
         "gh-pages": "^2.1.1",
+        "husky": "^3.0.5",
+        "lint-staged": "^9.2.5",
         "prettier": "^1.18.2",
         "regenerator-runtime": "^0.13.2",
         "style-loader": "^0.23.1",
