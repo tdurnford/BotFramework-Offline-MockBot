@@ -13,7 +13,7 @@ const processor = async (context: TurnContext) => {
         {
           title: '"openUrl"',
           type: 'openUrl',
-          value: 'https://microsoft.com/',
+          value: 'https://microsoft.com/'
         }
       ],
       // TODO: Should we fill in the "to"?
@@ -27,4 +27,4 @@ export default {
   name: 'Suggested actions',
   pattern: /card-actions$/i,
   processor
-}
+};

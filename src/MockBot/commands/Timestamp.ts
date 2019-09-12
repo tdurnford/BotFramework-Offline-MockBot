@@ -4,11 +4,10 @@ import sleep from '../utils/sleep';
 const name = 'Timestamp grouping';
 
 const help = () => ({
-    'timestamp': 'Show 4 messages at different time for testing timestamp grouping'
+  timestamp: 'Show 4 messages at different time for testing timestamp grouping'
 });
 
 async function processor(context: TurnContext) {
-
   await context.sendActivity({
     text: 'I am going to send 5 messages at different time _t_.',
     type: 'message'
@@ -52,4 +51,4 @@ export default {
   help,
   name,
   processor
- }
+};

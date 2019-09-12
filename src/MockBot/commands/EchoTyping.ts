@@ -14,11 +14,11 @@ const processor = async (context: TurnContext, { echoTypingAccessor }) => {
   }
 
   await echoTypingAccessor.set(context, !echoTyping);
-}
+};
 
 export default {
   help,
   name: 'Echo typing',
   pattern: /^echo-typing$/i,
   processor
-}
+};

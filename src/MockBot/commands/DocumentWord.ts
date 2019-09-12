@@ -9,11 +9,13 @@ async function processor(context: TurnContext) {
 
   await context.sendActivity({
     type: 'message',
-    attachments: [{
-      contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-      contentUrl: `${PUBLIC_URL}assets/test.docx`,
-      name: 'test.docx'
-    }]
+    attachments: [
+      {
+        contentType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        contentUrl: `${PUBLIC_URL}assets/test.docx`,
+        name: 'test.docx'
+      }
+    ]
   });
 }
 
@@ -22,4 +24,4 @@ export default {
   name: 'Word document attachment',
   pattern: /^document-word$/i,
   processor
-}
+};

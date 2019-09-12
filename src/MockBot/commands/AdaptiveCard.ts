@@ -99,14 +99,14 @@ const getCardJSON = (name: string = ''): any => {
     case 'weather':
       return Weather();
   }
-}
+};
 
 const processor = async (context: TurnContext, { args }: { args: string }) => {
   const names = args.split(' ');
   const contents = names.filter(name => name).map(name => getCardJSON(name));
 
   if (contents && contents.length) {
-    let text = `Showing  ${ names.filter(name => name).join(', ') }`;
+    let text = `Showing  ${names.filter(name => name).join(', ')}`;
 
     await context.sendActivity({
       type: 'message',
@@ -120,13 +120,13 @@ const processor = async (context: TurnContext, { args }: { args: string }) => {
   } else {
     await context.sendActivity({
       type: 'message',
-      text: `No card named "${ name }"`
+      text: `No card named "${name}"`
     });
   }
-} 
+};
 
-export default { 
-  help, 
+export default {
+  help,
   name: 'Adaptive Card',
   pattern: /^card(\s+[\d\w:]+)(\s+[\d\w:]+)?(\s+[\d\w:]+)?(\s+[\d\w:]+)?(\s+[\d\w:]+)?/i,
   processor

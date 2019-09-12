@@ -41,14 +41,14 @@ async function sendInputHint({ adapter, activity }: TurnContext, inputHint) {
   });
 }
 
-async function processor(context: TurnContext, { args }: { args: string; }) {
+async function processor(context: TurnContext, { args }: { args: string }) {
   const inputHints = args.split(' ');
-  (async function (context) {
+  (async function(context) {
     // This loop is intentionally executed in a serial manner (instead of using Promise.all for parallelism)
     while (inputHints.length) {
       const inputHint = inputHints.shift();
 
-      inputHint && await sendInputHint(context, inputHint);
+      inputHint && (await sendInputHint(context, inputHint));
     }
   })(context);
 }
@@ -57,5 +57,5 @@ export default {
   help,
   name: 'Input hint',
   pattern: /^input[\-\s]hint(\s+[\d\w]+)?(\s+[\d\w]+)?|^hint(\s+[\d\w]+)?(\s+[\d\w]+)?/i,
-  processor 
-}
+  processor
+};

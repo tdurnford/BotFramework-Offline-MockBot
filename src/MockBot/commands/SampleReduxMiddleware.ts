@@ -2,23 +2,28 @@ import { TurnContext } from 'botbuilder-core';
 
 const SUGGESTED_ACTIONS = {
   suggestedActions: {
-    actions: [{
-      type: 'imBack',
-      title: 'Red',
-      value: 'sample:redux-middleware red'
-    }, {
-      type: 'imBack',
-      title: 'Green',
-      value: 'sample:redux-middleware green'
-    }, {
-      type: 'imBack',
-      title: 'Blue',
-      value: 'sample:redux-middleware blue'
-    }, {
-      type: 'imBack',
-      title: 'Translucent',
-      value: 'sample:redux-middleware transparent'
-    }],
+    actions: [
+      {
+        type: 'imBack',
+        title: 'Red',
+        value: 'sample:redux-middleware red'
+      },
+      {
+        type: 'imBack',
+        title: 'Green',
+        value: 'sample:redux-middleware green'
+      },
+      {
+        type: 'imBack',
+        title: 'Blue',
+        value: 'sample:redux-middleware blue'
+      },
+      {
+        type: 'imBack',
+        title: 'Translucent',
+        value: 'sample:redux-middleware transparent'
+      }
+    ],
     to: []
   }
 };
@@ -38,7 +43,11 @@ async function processor(context: TurnContext, { args: color }) {
 
     context.sendActivity({
       type: 'message',
-      text: `Will send Redux action in another "message" activity.\n\n\`\`\`\n${ JSON.stringify(action, null, 2) }\n\`\`\`\n\nFeel free to let me know if you changed your mind.`,
+      text: `Will send Redux action in another "message" activity.\n\n\`\`\`\n${JSON.stringify(
+        action,
+        null,
+        2
+      )}\n\`\`\`\n\nFeel free to let me know if you changed your mind.`,
       ...SUGGESTED_ACTIONS
     });
 
@@ -61,4 +70,4 @@ export default {
   name: 'Demo for Redux middleware sample',
   pattern: /^sample:redux-middleware(\s+[\d\w\-]+)*$/i,
   processor
- }
+};

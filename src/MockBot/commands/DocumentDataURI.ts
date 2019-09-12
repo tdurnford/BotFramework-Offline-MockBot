@@ -7,11 +7,13 @@ const help = () => ({
 async function processor(context: TurnContext) {
   await context.sendActivity({
     type: 'message',
-    attachments: [{
-      contentType: 'text/plain',
-      contentUrl: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==`,
-      name: 'dot.png'
-    }]
+    attachments: [
+      {
+        contentType: 'text/plain',
+        contentUrl: `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==`,
+        name: 'dot.png'
+      }
+    ]
   });
 }
 
@@ -20,4 +22,4 @@ export default {
   name: 'Document Data URI',
   pattern: /^document-data-uri$/i,
   processor
-}
+};

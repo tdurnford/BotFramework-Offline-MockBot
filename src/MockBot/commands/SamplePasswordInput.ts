@@ -18,4 +18,4 @@ export default {
   name: 'Demo for password input sample',
   pattern: 'sample:password-input',
   processor
- }
+};

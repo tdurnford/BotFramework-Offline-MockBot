@@ -10,13 +10,13 @@ const EVENT_ACTIVITY = {
 };
 
 const help = () => ({
-    'sample:backchannel': 'Demo for backchannel sample'
+  'sample:backchannel': 'Demo for backchannel sample'
 });
 
 async function processor(context: TurnContext) {
   await context.sendActivity({
     type: 'message',
-    text: `I am sending an \`event\` activity like below:\n\n\`\`\`\n${ JSON.stringify(EVENT_ACTIVITY, null, 2) }\n\`\`\``
+    text: `I am sending an \`event\` activity like below:\n\n\`\`\`\n${JSON.stringify(EVENT_ACTIVITY, null, 2)}\n\`\`\``
   });
 
   await sleep(1000);
@@ -29,4 +29,4 @@ export default {
   name: 'Demo for backchannel sample',
   pattern: 'sample:backchannel',
   processor
- }
+};

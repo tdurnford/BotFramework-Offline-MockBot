@@ -12,10 +12,12 @@ async function processor(context: TurnContext, { args }: { args: string }) {
     case 'attachment':
       await context.sendActivity({
         type: 'message',
-        attachments: [{
-          contentType: 'x-unknown-attachment',
-          content: {}
-        }]
+        attachments: [
+          {
+            contentType: 'x-unknown-attachment',
+            content: {}
+          }
+        ]
       });
 
       break;
@@ -24,10 +26,12 @@ async function processor(context: TurnContext, { args }: { args: string }) {
     default:
       await context.sendActivity({
         type: 'x-unknown-activity',
-        attachments: [{
-          contentType: 'x-unknown-attachment',
-          content: {}
-        }]
+        attachments: [
+          {
+            contentType: 'x-unknown-attachment',
+            content: {}
+          }
+        ]
       });
 
       break;
@@ -39,4 +43,4 @@ export default {
   name,
   pattern: /^unknown(\s+[\d\w]+)?/i,
   processor
- }
+};
