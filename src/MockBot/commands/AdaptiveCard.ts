@@ -5,6 +5,7 @@ import BingSports from './Cards/BingSports';
 import Breakfast from './Cards/Breakfast';
 import Broken from './Cards/Broken';
 import CalendarReminder from './Cards/CalendarReminder';
+import ContainerStyles from './Cards/ContainerStyles';
 import FlightTracking from './Cards/FlightTracking';
 import FlightUpdate from './Cards/FlightUpdate';
 import Inputs from './Cards/Inputs';
@@ -61,6 +62,9 @@ const getCardJSON = (name: string = ''): any => {
     case 'calendar':
     case 'reminder':
       return CalendarReminder();
+
+    case 'containerstyles':
+      return ContainerStyles();
 
     case 'flight':
     case 'flightupdate':
