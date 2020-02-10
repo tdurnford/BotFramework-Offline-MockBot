@@ -7,7 +7,7 @@ import Broken from './Cards/Broken';
 import CalendarReminder from './Cards/CalendarReminder';
 import FlightTracking from './Cards/FlightTracking';
 import FlightUpdate from './Cards/FlightUpdate';
-import GreetingArabic from './Cards/GreetingArabic';
+import ArabicGreeting from './Cards/ArabicGreeting';
 import Inputs from './Cards/Inputs';
 import Markdown from './Cards/Markdown';
 import OrderedList from './Cards/OrderedList';
@@ -20,7 +20,7 @@ import UnorderedList from './Cards/UnorderedList';
 import Weather from './Cards/Weather';
 
 const help = () => ({
-  'card greetingarabic': 'Show an Arabic greeing card card for RTL',
+  'card arabicgreeting': 'Show an Arabic greeing card card for RTL',
   'card bingsports': 'Show Bing sports using Adaptive Card',
   'card breakfast': 'Show breakfast review using Adaptive Card',
   'card broken:lang': 'Show an Adaptive Card that is broken because of invalid language identifier',
@@ -44,6 +44,9 @@ const getCardJSON = (name: string = ''): any => {
   switch (name.trim().toLowerCase()) {
     case 'actionstyles':
       return ActionStyles();
+
+    case 'arabicgreeting':
+      return ArabicGreeting();
 
     case 'bingsports':
     case 'sports':
@@ -70,9 +73,6 @@ const getCardJSON = (name: string = ''): any => {
 
     case 'flighttracking':
       return FlightTracking();
-
-    case 'greetingarabic':
-      return GreetingArabic();
 
     case 'inputs':
       return Inputs();

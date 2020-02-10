@@ -1,7 +1,7 @@
 import { TurnContext } from 'botbuilder-core';
 
 const help = () => ({
-  'markdown arabic': 'Show a Markdown-formatted message'
+  'arabic markdown': 'Show a Markdown-formatted message for RTL'
 });
 
 const processor = async (context: TurnContext) => {
@@ -14,7 +14,7 @@ const processor = async (context: TurnContext) => {
 
 export default {
   help,
-  name: 'Markdown Arabic',
-  pattern: /markdown arabic$/i,
+  name: 'Arabic Markdown',
+  pattern: /^arabic markdown$/i,
   processor
 };

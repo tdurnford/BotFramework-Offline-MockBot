@@ -1,7 +1,7 @@
 import { TurnContext } from 'botbuilder-core';
 
 const help = () => ({
-  'carousel Arabic': 'Show a carousel in Arabic of product details'
+  'arabic carousel': 'Show a carousel in Arabic of product details'
 });
 
 const processor = async (context: TurnContext) => {
