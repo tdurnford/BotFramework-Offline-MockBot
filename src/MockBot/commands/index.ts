@@ -3,6 +3,7 @@ import AnimationCard from './AnimationCard';
 import AudioCard from './AudioCard';
 import CardActions from './CardActions';
 import Carousel from './Carousel';
+import CarouselArabic from './CarouselArabic';
 import ChannelData from './ChannelData';
 import Default from './Default';
 import DumpActivity from './DumpActivity';
@@ -16,6 +17,7 @@ import Hint from './InputHints';
 import Image from './Image';
 import Layout from './Layout';
 import Markdown from './Markdown';
+import MarkdownArabic from './MarkdownArabic';
 import ReceiptCard from './ReceiptCard';
 import SuggestedActionsCard from './SuggestedActionsCard';
 import Text from './Text';
@@ -35,6 +37,7 @@ export default [
   AudioCard,
   CardActions,
   Carousel,
+  CarouselArabic,
   ChannelData,
   Echo,
   EchoTyping,
@@ -47,6 +50,7 @@ export default [
   Image,
   Layout,
   Markdown,
+  MarkdownArabic,
   ReceiptCard,
   SuggestedActionsCard,
   Text,
