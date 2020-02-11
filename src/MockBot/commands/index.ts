@@ -1,10 +1,10 @@
 import AdaptiveCard from './AdaptiveCard';
 import AnimationCard from './AnimationCard';
-import AudioCard from './AudioCard';
+import ArabicCarousel from './ArabicCarousel';
 import ArabicMarkdown from './ArabicMarkdown';
+import AudioCard from './AudioCard';
 import CardActions from './CardActions';
 import Carousel from './Carousel';
-import ArabicCarousel from './ArabicCarousel';
 import ChannelData from './ChannelData';
 import Default from './Default';
 import DumpActivity from './DumpActivity';
@@ -34,11 +34,11 @@ import Xml from './Xml';
 export default [
   AdaptiveCard,
   AnimationCard,
+  ArabicCarousel,
   ArabicMarkdown,
   AudioCard,
   CardActions,
   Carousel,
-  ArabicCarousel,
   ChannelData,
   Echo,
   EchoTyping,

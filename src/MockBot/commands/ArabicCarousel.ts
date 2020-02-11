@@ -119,7 +119,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name,
-  // pattern: /^carousel arabic|^arabic/i,
   pattern: /^arabic carousel/i,
   processor
 };
