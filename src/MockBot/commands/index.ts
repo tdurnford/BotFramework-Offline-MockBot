@@ -1,5 +1,7 @@
 import AdaptiveCard from './AdaptiveCard';
 import AnimationCard from './AnimationCard';
+import ArabicCarousel from './ArabicCarousel';
+import ArabicMarkdown from './ArabicMarkdown';
 import AudioCard from './AudioCard';
 import CardActions from './CardActions';
 import Carousel from './Carousel';
@@ -32,6 +34,8 @@ import Xml from './Xml';
 export default [
   AdaptiveCard,
   AnimationCard,
+  ArabicCarousel,
+  ArabicMarkdown,
   AudioCard,
   CardActions,
   Carousel,
