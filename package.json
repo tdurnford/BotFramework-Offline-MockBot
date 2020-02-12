@@ -19,6 +19,7 @@
     "scripts": {
         "build:babel": "babel src --out-dir lib --extensions .ts,.js --copy-files --source-maps inline",
         "build:webpack": "webpack --mode=production",
+        "deploy": "gh-pages -d dist",
         "start": "npx serve",
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1",
