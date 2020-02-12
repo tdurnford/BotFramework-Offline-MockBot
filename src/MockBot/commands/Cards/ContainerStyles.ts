@@ -47,7 +47,7 @@ export default () => ({
       items: [
         {
           type: 'TextBlock',
-          text: '"warning" Container Style'
+          text: '"Warning" Container Style'
         }
       ],
       style: 'warning'
