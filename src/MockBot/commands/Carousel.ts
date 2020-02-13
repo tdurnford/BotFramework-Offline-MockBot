@@ -15,9 +15,9 @@ const processor = async (context: TurnContext) => {
       {
         contentType: 'application/vnd.microsoft.card.hero',
         content: {
-          title: 'تفاصيل عن الصورة 1',
-          subtitle: 'هذا عنوان فرعي',
-          text: 'السعر: $###.## دولار امريكي',
+          title: 'Details about image 1',
+          subtitle: 'This is the subtitle',
+          text: 'Price: $XXX.XX USD',
           images: [
             {
               url: `${PUBLIC_URL}assets/surface1.jpg`
@@ -26,13 +26,13 @@ const processor = async (context: TurnContext) => {
           buttons: [
             {
               type: 'imBack',
-              value: 'مكان الشراء',
-              title: 'اماكن الشراء'
+              value: 'Place to buy',
+              title: 'Places To Buy'
             },
             {
               type: 'imBack',
-              value: 'المنتجات ذات الصلة',
-              title: 'المنتجات ذات الصلة'
+              value: 'Related Products',
+              title: 'Related Products'
             }
           ]
         }
@@ -40,9 +40,9 @@ const processor = async (context: TurnContext) => {
       {
         contentType: 'application/vnd.microsoft.card.hero',
         content: {
-          title: 'تفاصيل عن الصورة 2',
-          subtitle: 'هذا عنوان فرعي',
-          text: 'السعر: $###.## دولار امريكي',
+          title: 'Details about image 2',
+          subtitle: 'This is the subtitle',
+          text: 'Price: $XXX.XX USD',
           images: [
             {
               url: `${PUBLIC_URL}assets/surface2.jpg`
@@ -51,13 +51,13 @@ const processor = async (context: TurnContext) => {
           buttons: [
             {
               type: 'imBack',
-              value: 'مكان الشراء',
-              title: 'اماكن الشراء'
+              value: 'Place to buy',
+              title: 'Places To Buy'
             },
             {
               type: 'imBack',
-              value: 'المنتجات ذات الصلة',
-              title: 'المنتجات ذات الصلة'
+              value: 'Related Products',
+              title: 'Related Products'
             }
           ]
         }
@@ -65,9 +65,9 @@ const processor = async (context: TurnContext) => {
       {
         contentType: 'application/vnd.microsoft.card.hero',
         content: {
-          title: 'تفاصيل عن الصورة 3',
-          subtitle: 'هذا عنوان فرعي',
-          text: 'السعر: $###.## دولار امريكي',
+          title: 'Details about image 3',
+          subtitle: 'This is the subtitle',
+          text: 'Price: $XXX.XX USD',
           images: [
             {
               url: `${PUBLIC_URL}assets/surface3.jpg`
@@ -76,13 +76,13 @@ const processor = async (context: TurnContext) => {
           buttons: [
             {
               type: 'imBack',
-              value: 'مكان الشراء',
-              title: 'اماكن الشراء'
+              value: 'Place to buy',
+              title: 'Places To Buy'
             },
             {
               type: 'imBack',
-              value: 'المنتجات ذات الصلة',
-              title: 'المنتجات ذات الصلة'
+              value: 'Related Products',
+              title: 'Related Products'
             }
           ]
         }
@@ -90,9 +90,9 @@ const processor = async (context: TurnContext) => {
       {
         contentType: 'application/vnd.microsoft.card.hero',
         content: {
-          title: 'تفاصيل عن الصورة 4',
-          subtitle: 'هذا عنوان فرعي',
-          text: 'السعر: $###.## دولار امريكي',
+          title: 'Details about image 4',
+          subtitle: 'This is the subtitle',
+          text: 'Price: $XXX.XX USD',
           images: [
             {
               url: `${PUBLIC_URL}assets/surface4.jpg`
@@ -101,13 +101,13 @@ const processor = async (context: TurnContext) => {
           buttons: [
             {
               type: 'imBack',
-              value: 'مكان الشراء',
-              title: 'اماكن الشراء'
+              value: 'Place to buy',
+              title: 'Places To Buy'
             },
             {
               type: 'imBack',
-              value: 'المنتجات ذات الصلة',
-              title: 'المنتجات ذات الصلة'
+              value: 'Related Products',
+              title: 'Related Products'
             }
           ]
         }
@@ -119,6 +119,6 @@ const processor = async (context: TurnContext) => {
 export default {
   help,
   name,
-  pattern: /^arabic carousel|يشترى/i,
+  pattern: /^carousel/i,
   processor
 };
