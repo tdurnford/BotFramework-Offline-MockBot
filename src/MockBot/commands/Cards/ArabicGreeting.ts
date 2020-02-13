@@ -1,12 +1,12 @@
 export default () => ({
   $schema: 'http://adaptivecards.io/schemas/adaptive-card.json',
   type: 'AdaptiveCard',
-  version: '1.2',
-  speak: '<s>Arabic<Hello! select an action below></s>',
+  version: '1.0',
+  speak: '<s>مرحبا! إختر من إحدى النشاطاط بالأسفل</s>',
   body: [
     {
       type: 'TextBlock',
-      text: 'Arabic<Hello! I speak some Arabic.> ',
+      text: 'مرحباً! انا اتحدث القليل من اللغة العربية',
       size: 'Large',
       weight: 'Bolder'
     },
@@ -18,7 +18,7 @@ export default () => ({
     },
     {
       type: 'TextBlock',
-      text: 'Arabic<Select from the available Arabic commands below>',
+      text: 'اختر من احدى الأوامر العربية المتاحة بالأسفل',
       isSubtle: true
     },
     {
@@ -26,65 +26,28 @@ export default () => ({
       text: '(Select from the available Arabic commands below)',
       isSubtle: true,
       spacing: 'None'
-    },
-    {
-      type: 'TextBlock',
-      text: 'Command translations to English:'
-    },
-    {
-      type: 'FactSet',
-      facts: [
-        {
-          title: '1',
-          value: 'Say hello'
-        },
-        {
-          title: '2',
-          value: 'Show a carousel'
-        },
-        {
-          title: '3',
-          value: 'Show download attachment'
-        },
-        {
-          title: '4',
-          value: 'Show Right to Left tests'
-        },
-        {
-          title: '5',
-          value: 'Typing animation'
-        },
-        {
-          title: '6',
-          value: 'Markdown card'
-        }
-      ]
     }
   ],
   actions: [
     {
+      data: 'card arabicgreeting',
       type: 'Action.Submit',
-      title: 'Arabic<Say hello>'
+      title: 'رحب بالقارئ'
     },
     {
+      data: 'يشترى',
       type: 'Action.Submit',
-      title: 'Arabic<Show a carousel>'
+      title: 'carousel إظهر مكتبة دوارة'
     },
     {
+      data: 'typing 1',
       type: 'Action.Submit',
-      title: 'Arabic<Show download attachment>'
+      title: 'اعدادات تأثيرات الحركة للكتابة'
     },
     {
+      data: 'نص',
       type: 'Action.Submit',
-      title: 'Arabic<Right to Left tests>'
-    },
-    {
-      type: 'Action.Submit',
-      title: 'Arabic<Typing animation>'
-    },
-    {
-      type: 'Action.Submit',
-      title: 'Arabic<Markdown card>'
+      title: 'markdown كارت'
     }
   ]
 });
