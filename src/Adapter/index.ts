@@ -5,6 +5,7 @@ import { BotAdapter, ConversationState, MemoryStorage, TurnContext, UserState } 
 import Observable from 'core-js/features/observable';
 
 import MockBot from '../MockBot';
+import dateNow from './utils/dateNow';
 
 export const USER_PROFILE = { id: 'user', role: 'user' };
 export const BOT_PROFILE = { id: 'bot', name: 'bot', role: 'bot' };
@@ -28,8 +29,9 @@ export default class WebChatAdapter extends BotAdapter {
       end() {},
       getSessionId: () => new Observable(observer => observer.complete()),
       postActivity: activity => {
-        const timestamp = new Date().toISOString();
-        const id = Date.now() + Math.random().toString(36);
+        const now = dateNow();
+        const timestamp = new Date(now).toISOString();
+        const id = now + Math.random().toString(36);
 
         return new Observable(observer => {
           const serverActivity = {
@@ -76,12 +78,16 @@ export default class WebChatAdapter extends BotAdapter {
       recipient: USER_PROFILE
     };
 
-    const sentActivities = activities.map(activity => ({
-      ...activity,
-      ...activityData,
-      id: Date.now() + Math.random().toString(36),
-      timestamp: new Date().toISOString()
-    }));
+    const sentActivities = activities.map(activity => {
+      const now = dateNow();
+
+      return {
+        ...activity,
+        ...activityData,
+        id: now + Math.random().toString(36),
+        timestamp: new Date(now).toISOString()
+      };
+    });
 
     return sentActivities.map(activity => {
       const { id } = activity;

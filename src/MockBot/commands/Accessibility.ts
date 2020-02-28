@@ -38,6 +38,6 @@ async function processor(context: TurnContext) {
 export default {
   help,
   name,
-  pattern: /^accessibility/$,
+  pattern: /^accessibility$/,
   processor
 };
