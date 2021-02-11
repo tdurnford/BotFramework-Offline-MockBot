@@ -1,24 +1,26 @@
 import { TurnContext } from 'botbuilder-core';
 
-import ActionStyles from './Cards/ActionStyles';
-import BingSports from './Cards/BingSports';
-import Breakfast from './Cards/Breakfast';
+import ActionStyles from './Cards/1.1/ActionStyles';
+import BingSports from './Cards/1.0/BingSports';
+import Breakfast from './Cards/1.0/Breakfast';
 import Broken from './Cards/Broken';
-import CalendarReminder from './Cards/CalendarReminder';
+import CalendarReminder from './Cards/1.0/CalendarReminder';
 import ContainerStyles from './Cards/ContainerStyles';
-import FlightTracking from './Cards/FlightTracking';
+import FlightTracking from './Cards/1.0/FlightTracking';
 import FlightUpdate from './Cards/FlightUpdate';
-import ArabicGreeting from './Cards/ArabicGreeting';
-import Inputs from './Cards/Inputs';
-import Markdown from './Cards/Markdown';
-import OrderedList from './Cards/OrderedList';
-import Restaurant from './Cards/Restaurant';
-import Review from './Cards/Review';
-import RichMessage from './Cards/RichMessage';
+import ArabicGreeting from './Cards/1.0/ArabicGreeting';
+import Inputs from './Cards/1.0/Inputs';
+import Markdown from './Cards/1.0/Markdown';
+import OrderedList from './Cards/1.0/OrderedList';
+import Restaurant from './Cards/1.0/Restaurant';
+import Review from './Cards/1.0/Review';
+import RichMessage from './Cards/1.0/RichMessage';
 import Simple from './Cards/Simple';
-import SportsClub from './Cards/SportsClub';
-import UnorderedList from './Cards/UnorderedList';
-import Weather from './Cards/Weather';
+import SportsClub from './Cards/1.0/SportsClub';
+import UnorderedList from './Cards/1.0/UnorderedList';
+import Weather from './Cards/1.0/Weather';
+import Agenda from './Cards/1.3/Agenda';
+import CardWizard from './Cards/1.3/CardWizard';
 
 const help = () => ({
   'card arabicgreeting': 'Show an Arabic greeing card card for RTL',
@@ -45,6 +47,8 @@ const getCardJSON = (name: string = ''): any => {
   switch (name.trim().toLowerCase()) {
     case 'actionstyles':
       return ActionStyles();
+    case 'agenda':
+      return Agenda();
 
     case 'arabicgreeting':
       return ArabicGreeting();
@@ -67,6 +71,10 @@ const getCardJSON = (name: string = ''): any => {
     case 'calendar':
     case 'reminder':
       return CalendarReminder();
+
+    case 'cardwizard':
+    case 'wizard':
+      return CardWizard();
 
     case 'container':
     case 'containerstyles':
