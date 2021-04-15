@@ -21,6 +21,7 @@ import UnorderedList from './Cards/1.0/UnorderedList';
 import Weather from './Cards/1.0/Weather';
 import Agenda from './Cards/1.3/Agenda';
 import CardWizard from './Cards/1.3/CardWizard';
+import TextBlockStyle from './Cards/1.0/TextBlockStyle';
 
 const help = () => ({
   'card arabicgreeting': 'Show an Arabic greeing card card for RTL',
@@ -110,6 +111,10 @@ const getCardJSON = (name: string = ''): any => {
 
     case 'sportsclub':
       return SportsClub();
+
+    case 'textblockstyle':
+    case 'textstyle':
+      return TextBlockStyle();
 
     case 'ul':
       return UnorderedList();
