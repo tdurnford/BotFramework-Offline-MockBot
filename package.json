@@ -32,7 +32,7 @@
         "botframework-directlinejs": "~0.11.2",
         "botframework-webchat": "^4.10.1",
         "core-js": "^3.0.1",
-        "node-fetch": "^2.6.1",
+        "node-fetch": "^2.6.7",
         "on-error-resume-next": "^1.1.0"
     },
     "devDependencies": {
